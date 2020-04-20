@@ -107,8 +107,8 @@ class Delhivery
                 'Accept'=> 'application/json',
                 'Authorization'=>'Token ' . $this->_token
             );
-            $data1 = "format=json&data=".json_encode($data);
-            $r = $this->_API->request($array['type'],$array['url'],['headers' => $array['header'],'body' => $data1]);
+            $formdata = "format=json&data=".json_encode($data);
+            $r = $this->_API->request($array['type'],$array['url'],['headers' => $array['header'],'form_params' => $formdata]);
             $response = $r->getBody()->getContents();
             return json_decode($response,true);
         }
